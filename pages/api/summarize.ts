@@ -25,16 +25,16 @@ export default async function handler(req: Request) {
 
     const data = await response.text();
 
-    const root = parse(data);
-    const body = root.querySelector(".article-content");
-    const text = body!.innerText
-      .replace(/(\r\n|\n|\r)/gm, "")
-      .replace(/(\r\t|\t|\r)/gm, "");
+    // const root = parse(data);
+    // const body = root.querySelector(".content");
+    // const text = body!.innerText
+    //   .replace(/(\r\n|\n|\r)/gm, "")
+    //   .replace(/(\r\t|\t|\r)/gm, "");
 
-    const prompt = `I want you to act like a news article summarizer. I will input text from a news article and your job is to convert it into a useful summary of a few sentences. Do not repeat sentences and make sure all sentences are clear and complete: "${text}"`;
+    const prompt = `I want you to act like a news article summarizer. I will input text from a news article and your job is to convert it into a useful summary of a few sentences. Do not repeat sentences and make sure all sentences are clear and complete: "${url}"`;
 
     const payload = {
-      model: "text-davinci-003",
+      model: "text-curie-001",
       prompt,
       temperature: 0.5,
       top_p: 1,
